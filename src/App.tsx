@@ -12,6 +12,10 @@ import {
 } from "agora-rtc-react";
 import axios from "axios";
 
+import {
+  useSearchParams
+} from "react-router-dom";
+
 const config: ClientConfig = {
   mode: "rtc",
   codec: "vp8",
@@ -22,14 +26,19 @@ const appId: string = process.env.REACT_APP_AGORA_APP_ID as string;
 
 const App = () => {
   const [inCall, setInCall] = useState(false);
-  const [channelName, setChannelName] = useState("");
+  let [searchParams, setSearchParams] = useSearchParams();
+  let chanel = searchParams.get("chanelName");
+
+  useEffect(() => {
+  }, [])
+
+
   return (
     <>
       {inCall ? (
         <VideoCall
           setInCall={setInCall}
-          setChannelName={setChannelName}
-          channelName={channelName}
+          channelName={chanel}
         />
       ) : (
         <div className="wrapper index">
@@ -46,7 +55,8 @@ const App = () => {
                   <div className="column">
                     <div className="channel-wrapper control has-icons-left">
                       <input
-                        onChange={(e) => setChannelName(e.target.value)}
+                        disabled
+                        value={chanel ? chanel : ''}
                         id="channel"
                         className={'ag-rounded input '}
                         type="text"
@@ -79,7 +89,7 @@ const App = () => {
                 <button
                   onClick={(e) => {
                     e.preventDefault();
-                    if (channelName === "") {
+                    if (chanel === "") {
                       alert("Channel Name is Required!");
                     } else {
                       setInCall(true);
@@ -101,10 +111,9 @@ const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
 
 const VideoCall = (props: {
   setInCall: React.Dispatch<React.SetStateAction<boolean>>;
-  setChannelName: React.Dispatch<React.SetStateAction<string>>;
-  channelName: string;
+  channelName: any;
 }) => {
-  const { setInCall, setChannelName, channelName } = props;
+  const { setInCall, channelName } = props;
   const [users, setUsers] = useState<IAgoraRTCRemoteUser[]>([]);
   const [start, setStart] = useState<boolean>(false);
   const client = useClient();
@@ -170,7 +179,6 @@ const VideoCall = (props: {
           tracks={tracks}
           setStart={setStart}
           setInCall={setInCall}
-          setChannelName={setChannelName}
         />
       )}
       {start && tracks && <Videos users={users} tracks={tracks} />}
@@ -209,10 +217,9 @@ export const Controls = (props: {
   tracks: any;
   setStart: any;
   setInCall: any;
-  setChannelName: any;
 }) => {
   const client = useClient();
-  const { tracks, setStart, setInCall, setChannelName } = props;
+  const { tracks, setStart, setInCall } = props;
   const [trackState, setTrackState] = useState({ video: true, audio: true });
 
   const mute = async (type: "audio" | "video") => {
@@ -234,7 +241,6 @@ export const Controls = (props: {
     client.removeAllListeners();
     tracks[0].close();
     tracks[1].close();
-    setChannelName("");
     setStart(false);
     setInCall(false);
   };
@@ -249,41 +255,6 @@ export const Controls = (props: {
       </p>
       {<p onClick={() => leaveChannel()}>Leave</p>}
     </div>
-  );
-};
-
-const ChannelForm = (props: {
-  setInCall: React.Dispatch<React.SetStateAction<boolean>>;
-  setChannelName: React.Dispatch<React.SetStateAction<string>>;
-  channelName: any;
-}) => {
-  const { setInCall, setChannelName, channelName } = props;
-
-  return (
-    <form className="join">
-      {appId === "" && (
-        <p style={{ color: "red" }}>
-          Please enter your Agora App ID in App.tsx and refresh the page
-        </p>
-      )}
-      <input
-        type="text"
-        placeholder="Enter Channel Name"
-        onChange={(e) => setChannelName(e.target.value)}
-      />
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          if (channelName === "") {
-            alert("Channel Name is Required!");
-          } else {
-            setInCall(true);
-          }
-        }}
-      >
-        Join
-      </button>
-    </form>
   );
 };
 
