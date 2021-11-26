@@ -95,12 +95,9 @@
     font-size: 18px;
     padding: 10px 10px;
     background: rgb(0, 182, 237);
+    cursor: pointer;
   }
   
-  #joinBtn:hover {
-    box-shadow: 0 2px 2px 1px #0056ED;
-    transition: box-shadow .1s ease-in-out;
-  }
   
   .dropdown.is-active .dropdown-menu {
     animation: dropdown .25s ease-in-out
