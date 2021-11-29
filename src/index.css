@@ -67,7 +67,6 @@ img {
   align-self: flex-start;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
-  justify-items: center;
   align-items: center;
   border-radius: 12px;
 }
@@ -76,7 +75,30 @@ img {
   position: relative;
   background-color:black;
   height: 95%;
-  width: 95%;
+  width: 89%;
+  border-width: 1px;
+  border-color: #38373A;
+  border-style: solid;
+}
+
+.vidOwn{
+  position: absolute;
+  background-color:black;
+  top: 29px;
+  right: 0;
+  height: 200px;
+  width: 200px;
+  border-width: 1px;
+  border-color: #38373A;
+  border-style: solid;
+  z-index: 9999;
+}
+
+.vidAlone{
+  position: relative;
+  background-color:black;
+  height: 95%;
+  width: 100%;
   border-width: 1px;
   border-color: #38373A;
   border-style: solid;

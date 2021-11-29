@@ -9,8 +9,8 @@ const OnBoard = (props: IPropsOnboard) => {
                 <section className="login-wrapper">
                     <div className="login-header">
                         <img src={require('../assets/images/ag-logo.png').default} alt="" />
-                        <p className="login-title">AgoraWeb v2.1</p>
-                        <p className="login-subtitle">Powering Real-Time Communications</p>
+                        <p className="login-title">Konsultasi vidio</p>
+                        <p className="login-subtitle">Brawijaya conferance</p>
                     </div>
                     <div className="login-body">
                         <div className="columns">

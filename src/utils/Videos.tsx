@@ -28,7 +28,21 @@ const Videos = (props: {
                 </div>
             </div>
             <div className="ag-main">
-                <div id="videos"><AgoraVideoPlayer className="vid" videoTrack={tracks[1]} /></div>
+                <div id="videos">
+                    <AgoraVideoPlayer className={users.length > 0 ? 'vidOwn' : 'vidAlone'} videoTrack={tracks[1]} />
+                    {users.length > 0 &&
+                        users.map((user) => {
+                            if (user.videoTrack) {
+                                return (
+                                    <AgoraVideoPlayer
+                                        className="vid"
+                                        videoTrack={user.videoTrack}
+                                        key={user.uid}
+                                    />
+                                );
+                            } else return null;
+                        })}
+                </div>
                 {ready && tracks && (
                     <Controls
                         tracks={tracks}
