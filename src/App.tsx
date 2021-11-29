@@ -21,17 +21,49 @@ const config: ClientConfig = {
   codec: "vp8",
 };
 
+type IParams = {
+  chanelName: string,
+  role: string,
+  nama: string
+}
+
 //ENTER APP ID HERE
 const appId: string = process.env.REACT_APP_AGORA_APP_ID as string;
 
 const App = () => {
   const [inCall, setInCall] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
+
+  const [state, setstate] = useState({
+    chanelName: '',
+    isBtn: false
+  })
+
+  const params: IParams = {
+    chanelName: '',
+    role: "",
+    nama: '',
+  }
+
   let chanel = searchParams.get("chanelName");
 
   useEffect(() => {
-  }, [])
+    if (chanel) {
+      setstate({
+        ...state,
+        chanelName: chanel,
+        isBtn: true
+      })
+    }
+  }, [chanel, state])
 
+  const actCall = (e: any) => {
+    e.preventDefault();
+    if (!state.chanelName) {
+      return alert('chanel name tidak boleh kosong')
+    }
+    return setInCall(true);
+  }
 
   return (
     <>
@@ -87,20 +119,14 @@ const App = () => {
               </div>
               <div className="login-footer">
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (chanel === "") {
-                      alert("Channel Name is Required!");
-                    } else {
-                      setInCall(true);
-                    }
-                  }}
+                  disabled={!state.isBtn}
+                  onClick={(e) => actCall(e)}
                   id="joinBtn" className="ag-rounded button is-info">Join
                 </button>
               </div>
             </section>
           </div>
-        </div>
+        </div >
       )}
     </>
   );
