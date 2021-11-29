@@ -59,11 +59,10 @@ img {
 }
 
 #videos{
-  /* background-color: red; */
   padding: 10px;
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 98%;
   margin: auto;
   align-self: flex-start;
   display: grid;
@@ -85,16 +84,15 @@ img {
 
 .controls{
   position: absolute;
-  bottom: -10px;
+  bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
-  margin: -20px auto;
   display: grid;
   grid-template-columns: repeat(3, 33%);
   align-items: center;
   justify-items: center;
   z-index: 1;
-  width: 500px;
+  width: 250px;
   max-width: 60vw;
 }
 
@@ -103,17 +101,14 @@ img {
   cursor: pointer;
   background: #38373A;
   color: #F7F7F7;
-  border-width: 1px;
-  border-color: #F7F7F7;
-  border-style: solid;
+  border-radius: 10px;
 }
 
 .controls p.on{
   background: #F7F7F7;
   color: #38373A;
   border-width: 1px;
-  border-color: #38373A;
-  border-style: solid;
+  border-radius: 10px;
 }
 
 /* wrapper vidio */
@@ -167,4 +162,17 @@ video {
   margin: 0 auto;
   background: rgba(255, 255, 255, .1);
   border-radius: 12px;
+}
+
+.ag-btn {
+  z-index: 12;
+  opacity: 0;
+  color: white;
+  /* width: 35px;
+    height: 35px; */
+  cursor: pointer;
+  font-size: 60px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }

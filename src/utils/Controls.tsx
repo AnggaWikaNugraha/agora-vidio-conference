@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ClientConfig } from "agora-rtc-sdk-ng";
 import { createClient } from "agora-rtc-react";
+import { VideocamOff, Videocam, MicNone, MicOff, ExitToApp } from '@material-ui/icons';
+
 const config: ClientConfig = { mode: "rtc", codec: "vp8" };
 
 //ENTER APP ID HERE
@@ -41,12 +43,12 @@ export const Controls = (props: {
     return (
         <div className="controls">
             <p className={trackState.audio ? "on" : ""} onClick={() => mute("audio")}>
-                {trackState.audio ? "MuteAudio" : "UnmuteAudio"}
+                {trackState.audio ? <MicOff /> : <MicNone />}
             </p>
             <p className={trackState.video ? "on" : ""} onClick={() => mute("video")}>
-                {trackState.video ? "MuteVideo" : "UnmuteVideo"}
+                {trackState.video ? <VideocamOff /> : <Videocam />}
             </p>
-            {<p onClick={() => leaveChannel()}>Leave</p>}
+            {<p onClick={() => leaveChannel()}><ExitToApp /></p>}
         </div>
     );
 };
