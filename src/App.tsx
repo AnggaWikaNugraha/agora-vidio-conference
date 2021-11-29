@@ -8,7 +8,6 @@ const App = () => {
   const [inCall, setInCall] = useState(false);
   const [searchParams,] = useSearchParams();
   const chanel = searchParams.get("chanelName");
-
   const [state, setstate] = useState({
     chanelName: '',
     isBtn: false
@@ -21,14 +20,16 @@ const App = () => {
   }
 
   useEffect(() => {
-    if (chanel) {
+
+    if (chanel !== null) {
       setstate({
         ...state,
         chanelName: chanel,
         isBtn: true
       })
     }
-  }, [chanel, state])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chanel])
 
   const actCall = (e: any) => {
     e.preventDefault();

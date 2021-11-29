@@ -19,6 +19,7 @@ const VideoCall = (props: {
 }) => {
 
     const { setInCall, channelName } = props;
+    console.log(channelName)
     const [users, setUsers] = useState<IAgoraRTCRemoteUser[]>([]);
     const [start, setStart] = useState<boolean>(false);
     const client = useClient();
@@ -85,16 +86,17 @@ const VideoCall = (props: {
 
 
     return (
-        <div className="App">
-            {ready && tracks && (
-                <Controls
+        <>
+            {start && tracks &&
+                <Videos
+                    channelName={channelName}
+                    users={users}
                     tracks={tracks}
                     setStart={setStart}
+                    ready={ready}
                     setInCall={setInCall}
-                />
-            )}
-            {start && tracks && <Videos users={users} tracks={tracks} />}
-        </div>
+                />}
+        </>
     );
 };
 
