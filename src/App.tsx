@@ -31,8 +31,9 @@ const App = () => {
     }
 
     await validateChannel(chanel).then((res: any) => {
+
       if (res.data.status === false) {
-        setisAlert(true)
+        return setisAlert(true)
       } else {
         return setInCall(true);
       }
