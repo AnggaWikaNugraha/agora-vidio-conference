@@ -59,10 +59,22 @@ img {
 }
 
 #videos{
-  padding: 10px;
+  padding-left: 150px;
   position: relative;
   height: 100%;
-  width: 98%;
+  width: 90%;
+  margin: auto;
+  align-self: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  align-items: center;
+  border-radius: 12px;
+}
+
+#videosAlone{
+  position: relative;
+  height: 100%;
+  width: 80%;
   margin: auto;
   align-self: flex-start;
   display: grid;
@@ -75,7 +87,7 @@ img {
   position: relative;
   background-color:black;
   height: 95%;
-  width: 92%;
+  width: 85%;
   border-width: 1px;
   border-color: #38373A;
   border-style: solid;
@@ -84,10 +96,10 @@ img {
 .vidOwn{
   position: absolute;
   background-color:black;
-  top: 29px;
-  right: 0;
-  height: 150px;
-  width: 150px;
+  top: 20px;
+  right: 4%;
+  height: 170px;
+  width: 170px;
   border-width: 1px;
   border-color: #38373A;
   border-style: solid;
@@ -136,7 +148,7 @@ img {
 /* wrapper vidio */
 
 .meeting.wrapper {
-  background: rgb(12, 43, 64);
+  background: black;
   height: 100%;
 }
 
@@ -145,7 +157,7 @@ video {
 }
 
 .meeting .ag-header-onvidio {
-  padding: 20px 30px;
+  padding: 20px 30px 10px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
