@@ -54,26 +54,6 @@ const Videos = (props: {
             <div className="ag-footer-onVid">
             </div>
         </div>
-
-        // <div>
-        //     <div id="videos">
-        //         <AgoraVideoPlayer className="vid" videoTrack={tracks[1]} />
-
-        //         {/* orang lain */}
-        //         {users.length > 0 &&
-        //             users.map((user) => {
-        //                 if (user.videoTrack) {
-        //                     return (
-        //                         <AgoraVideoPlayer
-        //                             className="vid"
-        //                             videoTrack={user.videoTrack}
-        //                             key={user.uid}
-        //                         />
-        //                     );
-        //                 } else return null;
-        //             })}
-        //     </div>
-        // </div>
     );
 };
 

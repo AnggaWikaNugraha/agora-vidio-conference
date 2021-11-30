@@ -3,7 +3,6 @@ import { ClientConfig, IAgoraRTCRemoteUser } from "agora-rtc-sdk-ng";
 import { createClient, createMicrophoneAndCameraTracks } from "agora-rtc-react";
 import axios from "axios";
 import Videos from "../utils/Videos";
-import { Controls } from "../utils/Controls";
 const config: ClientConfig = { mode: "rtc", codec: "vp8" };
 
 //ENTER APP ID HERE
@@ -62,6 +61,7 @@ const VideoCall = (props: {
             });
 
             try {
+
                 let generateToken: any = await axios.get(
                     `${process.env.REACT_APP_GENERATE_TOKEN_URL}${name}`
                 );
@@ -70,6 +70,7 @@ const VideoCall = (props: {
                 await client.join(appId, name, generatedToken, null);
                 if (tracks) await client.publish([tracks[0], tracks[1]]);
                 setStart(true);
+
             } catch (error) {
                 console.log(error);
             }
