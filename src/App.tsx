@@ -8,7 +8,9 @@ import DescriptionAlerts from "./utils/Alert";
 const App = () => {
   const [inCall, setInCall] = useState(false);
   const [searchParams,] = useSearchParams();
-  const chanel = searchParams.get("chanelName");
+  const chanel = searchParams.get("channelName");
+  const role = searchParams.get("role");
+  const name = searchParams.get("name");
   const [state, setstate] = useState({ chanelName: '', isBtn: false })
   const [isAlert, setisAlert] = useState(false)
 
@@ -33,7 +35,7 @@ const App = () => {
     await validateChannel(chanel).then((res: any) => {
 
       if (res.data.status === false) {
-        return setisAlert(true)
+        return setInCall(true);
       } else {
         return setInCall(true);
       }
@@ -44,12 +46,12 @@ const App = () => {
     <>
       {isAlert &&
         <div style={{ position: 'absolute', top: '-3px', left: 0, right: 0 }}>
-          <DescriptionAlerts message="Channel expired !!" setisAlert={setisAlert} />
+          <DescriptionAlerts message="Waktu tidak sesuai!" setisAlert={setisAlert} />
         </div>}
       {inCall ? (
-        <VideoCall setInCall={setInCall} channelName={chanel} />
+        <VideoCall role={role} name={name} setInCall={setInCall} channelName={chanel} />
       ) : (
-        <OnBoard chanel={chanel} state={state} actCall={actCall} />
+        <OnBoard role={role} name={name} chanel={chanel} state={state} actCall={actCall} />
       )}
     </>
   );

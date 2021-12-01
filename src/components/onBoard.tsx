@@ -18,7 +18,7 @@ const OnBoard = (props: IPropsOnboard) => {
                                 <div className="channel-wrapper control has-icons-left">
                                     <input
                                         disabled
-                                        value={props.chanel ? props.chanel : ''}
+                                        value={props.name ? props.name : ''}
                                         id="channel"
                                         className={'ag-rounded input '}
                                         type="text"

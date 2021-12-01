@@ -10,6 +10,8 @@ const Videos = (props: {
     setStart: any;
     setInCall: any;
     ready: any;
+    role: string | null;
+    name: string | null;
 }) => {
     const { users, tracks, setInCall, setStart, ready } = props;
 
@@ -24,7 +26,7 @@ const Videos = (props: {
                     />
                     <span>AgoraWeb v2.1</span>
                 </div>
-                <div className="ag-header-msg">Room:&nbsp;<span id="room-name">{props.channelName}</span>
+                <div className="ag-header-msg">Room:&nbsp;<span id="room-name">{props.name ? props.name : ''}</span>
                 </div>
             </div>
             <div className="ag-main">

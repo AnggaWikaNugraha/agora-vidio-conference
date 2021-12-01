@@ -14,11 +14,12 @@ const VideoCall = (props: {
 
     setInCall: React.Dispatch<React.SetStateAction<boolean>>;
     channelName: any;
+    role: string | null;
+    name: string | null;
 
 }) => {
 
-    const { setInCall, channelName } = props;
-    console.log(channelName)
+    const { setInCall, channelName, role, name } = props;
     const [users, setUsers] = useState<IAgoraRTCRemoteUser[]>([]);
     const [start, setStart] = useState<boolean>(false);
     const client = useClient();
@@ -90,6 +91,8 @@ const VideoCall = (props: {
         <>
             {start && tracks &&
                 <Videos
+                    role={role}
+                    name={name}
                     channelName={channelName}
                     users={users}
                     tracks={tracks}

@@ -7,5 +7,7 @@ export type IParams = {
 export type IPropsOnboard = {
   chanel: string | null,
   state: any,
+  role: string | null,
+  name: string | null,
   actCall: Function
 }
