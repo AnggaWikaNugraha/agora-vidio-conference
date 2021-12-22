@@ -21,10 +21,9 @@ const Videos = (props: {
                 <div className="ag-header-lead">
                     <img
                         className="header-logo"
-                        src={require("../assets/images/ag-logo.png").default}
+                        src={require("../assets/images/logo.png").default}
                         alt=""
                     />
-                    <span>AgoraWeb v2.1</span>
                 </div>
                 <div className="ag-header-msg">Room:&nbsp;<span id="room-name">{props.name ? props.name : ''}</span>
                 </div>
