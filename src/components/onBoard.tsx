@@ -11,23 +11,25 @@ const OnBoard = (props: IPropsOnboard) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid  container spacing={2}>
-                <WrapperKiri item xs={5}>
+                <WrapperKiri item xs={12} md={5}>
                     <Logo src={ILogo}/>
                     <OnBoardRs src={IonboardRs}/>
                 </WrapperKiri>
-                <WrapperKanan item xs={7}>
-                    <Title Fw={900} Fc='#000' Fs='32px'>Conference</Title>
-                    <Gap h='10px'/>
-                    <Title Fw={900} Fc='#bdbfc4' Fs='28px'>Join a new conference</Title>
-                    <Gap h='100px'/>
-                    <Title Fw={900} Fc='#000' Fs='28px'>Room</Title>
-                    <Input>
-                        <Title Fw={900} Fc='#bdbfc4' Fs='22px'>{props.name ? props.name : 'No Room !!'}</Title>
-                    </Input>
-                    <Button
-                        disabled={!props.state.isBtn}
-                        onClick={(e) => props.actCall(e)}
-                    >Join</Button>
+                <WrapperKanan item xs={12} md={7}>
+                    <div style={{padding : '30px'}}>
+                        <Title Fw={900} Fc='#000' Fs='32px'>Conference</Title>
+                        <Gap h='10px'/>
+                        <Title Fw={900} Fc='#bdbfc4' Fs='28px'>Join a new conference</Title>
+                        <Gap h='100px'/>
+                        <Title Fw={900} Fc='#000' Fs='28px'>Room</Title>
+                        <Input>
+                            <Title Fw={900} Fc='#bdbfc4' Fs='22px'>{props.name ? props.name : 'No Room !!'}</Title>
+                        </Input>
+                        <Button
+                            disabled={!props.state.isBtn}
+                            onClick={(e) => props.actCall(e)}
+                        >Join</Button>
+                    </div>
                 </WrapperKanan>
             </Grid>
         </Box>
@@ -48,18 +50,20 @@ type ITitle = {
 }
 
 const WrapperKiri = styled(Grid)((props) => ({
-    minHeight : '100vh',
+    maxHeight : '100vh',
     display: 'flex',
     alignItems : 'center',
-    flexDirection : 'column'
+    flexDirection : 'column',
+    overflow: 'hidden'
 }))
 
 const WrapperKanan = styled(Grid)((props) => ({
     backgroundColor : '#f4f5f9',
-    minHeight : '100vh',
+    maxHeight : '100vh',
     display: 'flex',
     justifyContent : 'center',
     flexDirection : 'column',
+    overflow: 'hidden'
 }))
 
 const Logo = styled('img')((props) => ({
@@ -98,7 +102,7 @@ const Input = styled('div')((props)=> ({
 const Button = styled('button')((props)=> ({
     marginTop : '30px',
     backgroundColor : '#004aad',
-    width: '10%',
+    width: '200px',
     height: '50px',
     borderRadius : '10px',
     color : 'white',
